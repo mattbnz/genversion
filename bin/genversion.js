@@ -19,6 +19,7 @@ program
   .option('-u, --strict', 'add "use strict" in generated code')
   .option('-p, --source <path>', 'search for package.json along a custom path')
   .option('-c, --check-only', 'check if the version module is up to date')
+  .option('-g, --with-git', 'include git details in version')
   .action((target, cliOpts) => {
     if (typeof target !== 'string' || target === '') {
       console.error('Missing argument: target')
@@ -33,7 +34,8 @@ program
       useDoubleQuotes: cliOpts.double,
       useEs6Syntax: cliOpts.es6,
       useStrict: cliOpts.strict,
-      source: cliOpts.source
+      source: cliOpts.source,
+      withGit: cliOpts.withGit,
     }
 
     // A source path along to search for the package.json
